@@ -59,6 +59,7 @@ set(memtools_SOURCES
 	"src/memtools/detail/result.hpp"
 	"src/memtools/module.cpp"
 	"src/memtools/module.hpp"
+	"src/memtools/virtual.hpp"
 )
 
 add_library(memtools STATIC)
