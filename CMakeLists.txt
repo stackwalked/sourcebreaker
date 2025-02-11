@@ -55,8 +55,8 @@ FetchContent_MakeAvailable(safetyhook)
 # Target: memtools
 set(memtools_SOURCES
 	cmake.toml
-	"memtools/tools.cpp"
-	"memtools/tools.hpp"
+	"memtools/src/tools.cpp"
+	"memtools/src/tools.hpp"
 )
 
 add_library(memtools STATIC)
@@ -80,8 +80,8 @@ target_link_libraries(memtools PUBLIC
 # Target: tfsdk
 set(tfsdk_SOURCES
 	cmake.toml
-	"tfsdk/game.hpp"
-	"tfsdk/init.cpp"
+	"tfsdk/src/game.hpp"
+	"tfsdk/src/init.cpp"
 )
 
 add_library(tfsdk STATIC)
@@ -100,7 +100,8 @@ target_include_directories(tfsdk PUBLIC
 # Target: sourcebreaker
 set(sourcebreaker_SOURCES
 	cmake.toml
-	"sourcebreaker/main.cpp"
+	"sourcebreaker/src/main.cpp"
+	"sourcebreaker/src/thirdparty.hpp"
 )
 
 add_library(sourcebreaker SHARED)
