@@ -121,7 +121,7 @@ target_link_libraries(sourcebreaker PUBLIC
 # Target: mapper
 set(mapper_SOURCES
 	cmake.toml
-	"mapper/main.cpp"
+	"mapper/src/main.cpp"
 )
 
 add_executable(mapper)
