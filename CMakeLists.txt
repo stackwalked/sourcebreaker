@@ -94,6 +94,8 @@ target_compile_features(tfsdk PUBLIC
 # Target: sourcebreaker
 set(sourcebreaker_SOURCES
 	cmake.toml
+	"src/sourcebreaker/ctx/context.cpp"
+	"src/sourcebreaker/ctx/context.hpp"
 	"src/sourcebreaker/main.cpp"
 	"src/sourcebreaker/thirdparty.hpp"
 )

@@ -7,6 +7,8 @@
 
 // STL
 #include <iostream> // std::cout, cin
+#include <memory>
+#include <thread>
 
 // DirectX (currently unused)
 // #include <d3d9.h>

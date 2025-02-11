@@ -8,7 +8,6 @@ AlignConsecutiveDeclarations: true
 AlignOperands: true
 AlignTrailingComments: true
 AllowShortIfStatementsOnASingleLine: false
-AlwaysBreakTemplateDeclarations: Yes
 BinPackParameters: false
 BraceWrapping: 
   AfterCaseLabel: false
