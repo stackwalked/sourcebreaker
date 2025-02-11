@@ -48,3 +48,5 @@ type = "executable"
 compile-features = ["cxx_std_23"]
 sources = ["src/mapper/**.cpp"]
 headers = ["src/mapper/**.hpp"]
+
+include-directories = ["src/"]

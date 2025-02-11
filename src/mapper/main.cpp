@@ -1,7 +1,12 @@
 #include <iostream>
 
-int main (int argc, char *argv[]) {
-  std::cout << "sourcebreaker::mapper | shell executable" << '\n';
+#include "api/loader.hpp"
+#include "ldrs/loadlib.hpp"
 
-  return 0;
+int main( int argc, char *argv[ ] ) {
+    map::loader< map::variant::LOADLIBRARY > loader{ };
+
+    loader.inject( "" );
+
+    return 0;
 }

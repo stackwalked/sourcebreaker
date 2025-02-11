@@ -128,6 +128,11 @@ target_link_libraries(sourcebreaker PUBLIC
 # Target: mapper
 set(mapper_SOURCES
 	cmake.toml
+	"src/mapper/api/loader.hpp"
+	"src/mapper/cfg/cmd.cpp"
+	"src/mapper/cfg/cmd.hpp"
+	"src/mapper/ldrs/loadlib.cpp"
+	"src/mapper/ldrs/loadlib.hpp"
 	"src/mapper/main.cpp"
 )
 
@@ -138,6 +143,10 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${mapper_SOURCES})
 
 target_compile_features(mapper PRIVATE
 	cxx_std_23
+)
+
+target_include_directories(mapper PRIVATE
+	"src/"
 )
 
 get_directory_property(CMKR_VS_STARTUP_PROJECT DIRECTORY ${PROJECT_SOURCE_DIR} DEFINITION VS_STARTUP_PROJECT)
