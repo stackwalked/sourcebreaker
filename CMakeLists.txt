@@ -105,6 +105,10 @@ target_compile_features(sourcebreaker PUBLIC
 	cxx_std_23
 )
 
+target_include_directories(sourcebreaker PUBLIC
+	"src/"
+)
+
 target_link_libraries(sourcebreaker PUBLIC
 	memtools
 	tfsdk

@@ -5,7 +5,5 @@
     <mapping directory="$PROJECT_DIR$/build/debug/_cmkr_v0.2.44" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/build/reldebinfo/_cmkr_v0.2.44" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/build/release/_cmkr_v0.2.44" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/memtools" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/tfsdk" vcs="Git" />
   </component>
 </project>

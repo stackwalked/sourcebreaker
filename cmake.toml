@@ -39,6 +39,7 @@ sources = ["src/sourcebreaker/**.cpp"]
 headers = ["src/sourcebreaker/**.hpp"]
 
 link-libraries = ["memtools", "tfsdk"]
+include-directories = ["src/"]
 
 [target.mapper]
 type = "executable"
