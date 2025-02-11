@@ -55,8 +55,9 @@ FetchContent_MakeAvailable(safetyhook)
 # Target: memtools
 set(memtools_SOURCES
 	cmake.toml
-	"memtools/src/tools.cpp"
-	"memtools/src/tools.hpp"
+	"src/memtools/result.hpp"
+	"src/memtools/tools.cpp"
+	"src/memtools/tools.hpp"
 )
 
 add_library(memtools STATIC)
@@ -68,11 +69,6 @@ target_compile_features(memtools PUBLIC
 	cxx_std_23
 )
 
-target_include_directories(memtools PUBLIC
-	"memtools/include"
-	"memtools/src"
-)
-
 target_link_libraries(memtools PUBLIC
 	safetyhook::safetyhook
 )
@@ -80,8 +76,8 @@ target_link_libraries(memtools PUBLIC
 # Target: tfsdk
 set(tfsdk_SOURCES
 	cmake.toml
-	"tfsdk/src/game.hpp"
-	"tfsdk/src/init.cpp"
+	"src/tfsdk/game.hpp"
+	"src/tfsdk/init.cpp"
 )
 
 add_library(tfsdk STATIC)
@@ -93,15 +89,11 @@ target_compile_features(tfsdk PUBLIC
 	cxx_std_23
 )
 
-target_include_directories(tfsdk PUBLIC
-	"tfsdk/src"
-)
-
 # Target: sourcebreaker
 set(sourcebreaker_SOURCES
 	cmake.toml
-	"sourcebreaker/src/main.cpp"
-	"sourcebreaker/src/thirdparty.hpp"
+	"src/sourcebreaker/main.cpp"
+	"src/sourcebreaker/thirdparty.hpp"
 )
 
 add_library(sourcebreaker SHARED)
@@ -121,7 +113,7 @@ target_link_libraries(sourcebreaker PUBLIC
 # Target: mapper
 set(mapper_SOURCES
 	cmake.toml
-	"mapper/src/main.cpp"
+	"src/mapper/main.cpp"
 )
 
 add_executable(mapper)

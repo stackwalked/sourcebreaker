@@ -20,29 +20,28 @@ safetyhook = { git = "https://github.com/cursey/safetyhook", tag = "v0.5.4" }
 
 [target.memtools]
 type = "static"
-sources = ["memtools/**.cpp"]
-headers = ["memtools/**.hpp"]
-include-directories = ["memtools/include", "memtools/src"]
 compile-features = ["cxx_std_23"]
+sources = ["src/memtools/**.cpp"]
+headers = ["src/memtools/**.hpp"]
+
 link-libraries = ["safetyhook::safetyhook"]
 
 [target.tfsdk]
 type = "static"
-sources = ["tfsdk/**.cpp"]
-headers = ["tfsdk/**.hpp"]
-include-directories = ["tfsdk/src"]
 compile-features = ["cxx_std_23"]
+sources = ["src/tfsdk/**.cpp"]
+headers = ["src/tfsdk/**.hpp"]
 
 [target.sourcebreaker]
 type = "shared"
-sources = ["sourcebreaker/**.cpp"]
-headers = ["sourcebreaker/**.hpp"]
-link-libraries = ["memtools", "tfsdk"]
 compile-features = ["cxx_std_23"]
+sources = ["src/sourcebreaker/**.cpp"]
+headers = ["src/sourcebreaker/**.hpp"]
+
+link-libraries = ["memtools", "tfsdk"]
 
 [target.mapper]
 type = "executable"
-sources = ["mapper/**.cpp"]
-headers = ["mapper/**.hpp"]
 compile-features = ["cxx_std_23"]
-
+sources = ["src/mapper/**.cpp"]
+headers = ["src/mapper/**.hpp"]
