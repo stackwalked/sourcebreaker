@@ -57,8 +57,8 @@ set(memtools_SOURCES
 	cmake.toml
 	"src/memtools/address.hpp"
 	"src/memtools/detail/result.hpp"
-	"src/memtools/dll.cpp"
-	"src/memtools/dll.hpp"
+	"src/memtools/module.cpp"
+	"src/memtools/module.hpp"
 )
 
 add_library(memtools STATIC)

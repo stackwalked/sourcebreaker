@@ -1,4 +1,4 @@
-#include "dll.hpp"
+#include "module.hpp"
 
 auto mem::detail::pattern_to_bytes( std::string_view pat ) -> std::vector< int > {
     auto bytes = std::vector< int >{ };
