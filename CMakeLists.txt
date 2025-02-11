@@ -55,9 +55,10 @@ FetchContent_MakeAvailable(safetyhook)
 # Target: memtools
 set(memtools_SOURCES
 	cmake.toml
-	"src/memtools/result.hpp"
-	"src/memtools/tools.cpp"
-	"src/memtools/tools.hpp"
+	"src/memtools/address.hpp"
+	"src/memtools/detail/result.hpp"
+	"src/memtools/dll.hpp"
+	"src/memtools/memtools.cpp"
 )
 
 add_library(memtools STATIC)
