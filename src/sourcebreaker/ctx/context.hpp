@@ -7,7 +7,7 @@ namespace sbr {
 
         ctx_t( ) = default;
 
-        // the perfect ctor. is an empty-body one :)
+        // the perfect ctor. is an empty one :)
         explicit ctx_t( const HMODULE inst ) : m_dll( inst ) {}
 
         // main loop.

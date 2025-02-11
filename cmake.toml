@@ -32,6 +32,8 @@ compile-features = ["cxx_std_23"]
 sources = ["src/tfsdk/**.cpp"]
 headers = ["src/tfsdk/**.hpp"]
 
+include-directories = ["src/"]
+
 [target.sourcebreaker]
 type = "shared"
 compile-features = ["cxx_std_23"]

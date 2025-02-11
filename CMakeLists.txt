@@ -80,6 +80,9 @@ set(tfsdk_SOURCES
 	cmake.toml
 	"src/tfsdk/game.hpp"
 	"src/tfsdk/init.cpp"
+	"src/tfsdk/math/math.hpp"
+	"src/tfsdk/math/vec2.hpp"
+	"src/tfsdk/math/vec3.hpp"
 )
 
 add_library(tfsdk STATIC)
@@ -89,6 +92,10 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${tfsdk_SOURCES})
 
 target_compile_features(tfsdk PUBLIC
 	cxx_std_23
+)
+
+target_include_directories(tfsdk PUBLIC
+	"src/"
 )
 
 # Target: sourcebreaker
