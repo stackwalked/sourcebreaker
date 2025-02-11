@@ -2,6 +2,18 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/debug/_cmkr_v0.2.44" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/debug/_deps/safetyhook-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/debug/_deps/zydis-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/debug/_deps/zydis-src/dependencies/zycore" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/reldebinfo/_cmkr_v0.2.44" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/reldebinfo/_deps/safetyhook-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/reldebinfo/_deps/zydis-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/reldebinfo/_deps/zydis-src/dependencies/zycore" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/release/_cmkr_v0.2.44" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/release/_deps/safetyhook-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/release/_deps/zydis-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/release/_deps/zydis-src/dependencies/zycore" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/memtools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/tfsdk" vcs="Git" />
   </component>
