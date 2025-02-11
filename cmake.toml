@@ -1,0 +1,48 @@
+# Reference: https://build-cpp.github.io/cmkr/cmake-toml
+[project]
+name = "sourcebreaker"
+languages = ["C", "CXX"]
+cmake-after = """
+# Enable multi-core compilation universally
+set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /MP")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
+"""
+
+[variables]
+SAFETYHOOK_FETCH_ZYDIS = "ON"
+
+# [vcpkg]
+# version = "2025.01.13"
+# packages = [""]
+
+[fetch-content]
+safetyhook = { git = "https://github.com/cursey/safetyhook", tag = "v0.5.4" }
+
+[target.memtools]
+type = "static"
+sources = ["memtools/**.cpp"]
+headers = ["memtools/**.hpp"]
+include-directories = ["memtools/include", "memtools/src"]
+compile-features = ["cxx_std_23"]
+link-libraries = ["safetyhook::safetyhook"]
+
+[target.tfsdk]
+type = "static"
+sources = ["tfsdk/**.cpp"]
+headers = ["tfsdk/**.hpp"]
+include-directories = ["tfsdk/src"]
+compile-features = ["cxx_std_23"]
+
+[target.sourcebreaker]
+type = "shared"
+sources = ["sourcebreaker/**.cpp"]
+headers = ["sourcebreaker/**.hpp"]
+link-libraries = ["memtools", "tfsdk"]
+compile-features = ["cxx_std_23"]
+
+[target.mapper]
+type = "executable"
+sources = ["mapper/**.cpp"]
+headers = ["mapper/**.hpp"]
+compile-features = ["cxx_std_23"]
+
