@@ -1,35 +1,43 @@
 #include "loadlib.hpp"
 
-#define FAIL_IF_ZERO( t, var, ex )                                                                 \
-    t var;                                                                                         \
-    if ( var = ex; !var )                                                                          \
-    return false
+#include <any>
+#include <print>
 
-bool map::loader< map::variant::LOADLIBRARY >::inject( const std::string_view dll ) const {
-    char full_path[ MAX_PATH ];
+#define LOG_OR_FAIL( var )                                                                         \
+    if ( !var ) {                                                                                  \
+        std::println( "[!] {} is null\n", #var );                                                  \
+        return false;                                                                              \
+    } else                                                                                         \
+        std::println( "[+] {} = {}\n", #var, var )
 
-    FAIL_IF_ZERO(
-            unsigned long, _gfpn_res,
-            GetFullPathNameA( dll.data( ), sizeof full_path, full_path, nullptr ) );
+auto map::loader< map::variant::LOADLIBRARY >::inject( const std::string_view dll ) const -> bool {
+    LOG_OR_FAIL( m_proc_handle.get( ) );
 
-    FAIL_IF_ZERO( HMODULE, k32, GetModuleHandleA( "kernel32.dll" ) );
+    char          full_path[ MAX_PATH ];
+    unsigned long _gfpn_res = GetFullPathNameA( dll.data( ), sizeof full_path, full_path, nullptr );
+    LOG_OR_FAIL( _gfpn_res );
 
-    FAIL_IF_ZERO( void *, lla, GetProcAddress( k32, "LoadLibraryA" ) );
+    void *k32 = GetModuleHandleA( "kernel32.dll" );
+    LOG_OR_FAIL( k32 );
 
-    FAIL_IF_ZERO(
-            void *, str,
-            VirtualAllocEx(
-                    m_proc_handle.get( ), nullptr, sizeof full_path, MEM_RESERVE | MEM_COMMIT,
-                    PAGE_EXECUTE_READWRITE ) );
+    void *lla = GetProcAddress( static_cast< HMODULE >( k32 ), "LoadLibraryA" );
+    LOG_OR_FAIL( lla );
 
-    FAIL_IF_ZERO(
-            int, _wpm_res,
-            WriteProcessMemory(
-                    m_proc_handle.get( ), str, full_path, strlen( full_path ), nullptr ) );
+    void *str = VirtualAllocEx(
+            m_proc_handle.get( ), nullptr, sizeof full_path, MEM_RESERVE | MEM_COMMIT,
+            PAGE_EXECUTE_READWRITE );
+    LOG_OR_FAIL( str );
 
-    CreateRemoteThread(
+    int _wpm_res = WriteProcessMemory(
+            m_proc_handle.get( ), str, full_path, strlen( full_path ), nullptr );
+    LOG_OR_FAIL( _wpm_res );
+
+    void *_ct_res = CreateRemoteThread(
             m_proc_handle.get( ), nullptr, 0, reinterpret_cast< LPTHREAD_START_ROUTINE >( lla ),
             str, 0, nullptr );
+    LOG_OR_FAIL( _ct_res );
 
     return true;
 }
+
+#undef LOG_OR_FAIL

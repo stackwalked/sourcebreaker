@@ -6,7 +6,6 @@
 
 #include <algorithm>
 #include <functional>
-#include <iterator>
 #include <memory>
 
 #include <mapper/api/loader.hpp>
@@ -41,7 +40,7 @@ template <> class map::loader< map::variant::LOADLIBRARY > final {
 
             CloseHandle( snapshot );
 
-            return ret == 0 ? handle{ OpenProcess( PROCESS_ALL_ACCESS, FALSE, ret ) } : nullptr;
+            return ret ? handle{ OpenProcess( PROCESS_ALL_ACCESS, FALSE, ret ) } : nullptr;
         }
 
         static auto simple_assert( std::invocable auto &&fx ) {
@@ -62,7 +61,7 @@ public:
 
     virtual ~loader( ) = default;
 
-    bool inject( std::string_view ) const;
+    auto inject( std::string_view ) const -> bool;
 
     // loadlib-related functionality
 };
