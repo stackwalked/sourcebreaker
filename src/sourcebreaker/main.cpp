@@ -8,7 +8,7 @@ auto __stdcall DllMain(
     if ( instance ) // null w/ some manual mappers
         DisableThreadLibraryCalls( instance );
 
-    std::thread( [ & ] {
+    std::thread( [ = ] {
         const sbr::ctx_t ctx{ instance };
         ctx.install( );
     } ).detach( );
