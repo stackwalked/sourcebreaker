@@ -5,10 +5,10 @@
 
 #define LOG_OR_FAIL( var )                                                                         \
     if ( !var ) {                                                                                  \
-        std::println( "[!] {} is null\n", #var );                                                  \
+        std::println( "[!] {} is null", #var );                                                    \
         return false;                                                                              \
     } else                                                                                         \
-        std::println( "[+] {} = {}\n", #var, var )
+        std::println( "[+] {} = {}", #var, var )
 
 auto map::loader< map::variant::LOADLIBRARY >::inject( const std::string_view dll ) const -> bool {
     LOG_OR_FAIL( m_proc_handle.get( ) );

@@ -5,7 +5,7 @@
 
 int main( const int argc, char *argv[] ) {
     if ( argc != 2 ) {
-        std::cerr << "Usage: " << argv[ 0 ] << " <path/to/module>\n";
+        std::cerr << "usage: " << argv[ 0 ] << " <path/to/module>\n";
         return EXIT_FAILURE;
     }
 
