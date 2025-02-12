@@ -10,7 +10,7 @@ namespace mem {
     namespace detail {
         // converts IDA-style signature to byte array
         auto pattern_to_bytes( std::string_view ) -> std::vector< int >;
-    }
+    } // namespace detail
 
     // neat wrapper around HMODULE, pointer-to-module
     class module_t {
@@ -30,13 +30,10 @@ namespace mem {
         [[nodiscard]] constexpr auto base( ) const -> address_t { return m_address; }
         [[nodiscard]] constexpr auto name( ) const -> const char * { return m_name; }
 
-        auto header_dos( ) -> IMAGE_DOS_HEADER * {
-            return m_address.cast< IMAGE_DOS_HEADER * >( );
-        }
+        auto header_dos( ) -> IMAGE_DOS_HEADER * { return m_address.cast< IMAGE_DOS_HEADER * >( ); }
 
         auto header_nt( ) -> IMAGE_NT_HEADERS * {
-            return m_address.offset( header_dos( )->e_lfanew ).ptr<
-                IMAGE_NT_HEADERS >( );
+            return m_address.offset( header_dos( )->e_lfanew ).ptr< IMAGE_NT_HEADERS >( );
         }
     };
 
@@ -47,4 +44,4 @@ namespace mem {
 
     // accepts IDA sig
     auto find_pattern( module_t &, const char *sig ) -> address_t;
-}
+} // namespace mem

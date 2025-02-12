@@ -13,4 +13,4 @@ namespace sbr {
         // main loop.
         auto install( ) const -> void;
     };
-}
+} // namespace sbr

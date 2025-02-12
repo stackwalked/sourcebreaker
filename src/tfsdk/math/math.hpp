@@ -20,7 +20,7 @@ namespace sdk {
         sine   = sin( radians );
         cosine = cos( radians );
     }
-}
+} // namespace sdk
 
 #include "vec2.hpp"
 #include "vec3.hpp"
@@ -28,4 +28,4 @@ namespace sdk {
 namespace sdk {
     using QAngle = vec3_t;
     using Vector = vec3_t;
-}
+} // namespace sdk

@@ -5,7 +5,8 @@
 
 namespace mem {
     // wrapper class around std::uintptr_t
-    // @credit: https://github.com/W1lliam1337/digital-sdk/blob/master/digital-sdk/core/utils/memory/address.hh
+    // @credit:
+    // https://github.com/W1lliam1337/digital-sdk/blob/master/digital-sdk/core/utils/memory/address.hh
     class address_t {
     public:
         address_t( ) = default;
@@ -29,31 +30,24 @@ namespace mem {
         [[nodiscard]] auto is_valid( ) const -> bool { return m_address && this; }
         // NOLINT(clang-diagnostic-undefined-bool-conversion)
 
-        template < typename T = address_t >
-        [[nodiscard]] auto to( ) const -> T { return *reinterpret_cast< T * >( m_address ); }
+        template < typename T = address_t > [[nodiscard]] auto to( ) const -> T {
+            return *reinterpret_cast< T * >( m_address );
+        }
 
-        template < typename T = address_t >
-        [[nodiscard]] auto as( ) const -> T { return m_address ? T( m_address ) : T( ); }
+        template < typename T = address_t > [[nodiscard]] auto as( ) const -> T {
+            return m_address ? T( m_address ) : T( );
+        }
 
         template < typename T = address_t >
         [[nodiscard]] auto at( const std::ptrdiff_t offset ) const -> T {
             return m_address ? *reinterpret_cast< T * >( m_address + offset ) : T( );
         }
 
-        template < typename T >
-        auto read( ) -> T {
-            return *ptr< T >( );
-        }
+        template < typename T > auto read( ) -> T { return *ptr< T >( ); }
 
-        template < typename T >
-        auto ptr( ) -> T * {
-            return reinterpret_cast< T * >( m_address );
-        }
+        template < typename T > auto ptr( ) -> T * { return reinterpret_cast< T * >( m_address ); }
 
-        template < typename T >
-        auto cast( ) -> T {
-            return reinterpret_cast< T >( m_address );
-        }
+        template < typename T > auto cast( ) -> T { return reinterpret_cast< T >( m_address ); }
 
         template < typename T = address_t >
         [[nodiscard]] auto offset( const std::ptrdiff_t offset ) const -> T {
@@ -76,7 +70,7 @@ namespace mem {
 
         template < typename T = address_t >
         [[nodiscard]] auto relative( const std::ptrdiff_t offset = 0x1 ) const -> T {
-            const std::ptrdiff_t new_address = m_address + offset;
+            const std::ptrdiff_t new_address   = m_address + offset;
             const std::int32_t relative_offset = *reinterpret_cast< std::int32_t * >( new_address );
 
             if ( !relative_offset )
@@ -85,12 +79,11 @@ namespace mem {
             return reinterpret_cast< T >( new_address + 4 + relative_offset );
         }
 
-        template < typename T = std::ptrdiff_t >
-        auto set( const T &value ) const -> void {
+        template < typename T = std::ptrdiff_t > auto set( const T &value ) const -> void {
             *reinterpret_cast< T * >( m_address ) = value;
         }
 
     private:
         std::uintptr_t m_address{ };
     };
-}
+} // namespace mem

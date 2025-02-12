@@ -37,6 +37,8 @@ project(sourcebreaker
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /MP")
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
 
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /permissive-")
+
 include(FetchContent)
 
 # Fix warnings about DOWNLOAD_EXTRACT_TIMESTAMP

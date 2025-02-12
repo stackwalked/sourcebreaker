@@ -7,6 +7,5 @@ namespace mem {
         ERR_UNKNOWN = 1,
     };
 
-    template < typename Ret >
-    using res_t = std::expected< Ret, status_t >;
-}
+    template < typename Ret > using res_t = std::expected< Ret, status_t >;
+} // namespace mem

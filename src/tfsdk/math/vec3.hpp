@@ -182,9 +182,7 @@ namespace sdk {
         }
 
         [[nodiscard]] vec3_t vel_to_ang( ) const {
-            auto magnitude = [&]( const vec3_t &v ) -> float {
-                return sqrtf( v.dot( v ) );
-            };
+            auto magnitude = [ & ]( const vec3_t &v ) -> float { return sqrtf( v.dot( v ) ); };
 
             float yaw, pitch;
 
@@ -312,4 +310,4 @@ namespace sdk {
             return out;
         }
     };
-}
+} // namespace sdk

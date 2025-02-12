@@ -118,4 +118,4 @@ namespace sdk {
 
         explicit operator bool( ) const noexcept { return !is_zero( ); }
     };
-}
+} // namespace sdk
